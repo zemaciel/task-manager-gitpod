@@ -6,6 +6,77 @@ This is the Code Institute student template for Gitpod. We have preinstalled all
 
 You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
+
+# Walkthrough
+
+# Steps to Initialise App
+
+## 1. Create “env.py”
+
+```python
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "any_secret_key")
+os.environ.setdefault("DEBUG", "True")
+os.environ.setdefault("DEVELOPMENT", "True")
+os.environ.setdefault("DB_URL", "postgresql:///taskmanager")
+```
+
+## 2. Install Requirements
+
+**`pip3 install 'Flask-SQLAlchemy<3' psycopg2 sqlalchemy==1.4.46`**
+
+## 3. Create Database
+
+In the terminal, get into **POSTGRES**
+
+```python
+set_pg
+psql
+```
+
+Then, create database by typing:
+
+```python
+CREATE DATABASE taskmanager;
+```
+
+Connect to database
+
+```python
+\c taskmanager
+```
+
+Come out of the CLI by typing `\q`.
+
+## 4. Generate and migrate our models into this new database.
+
+Next, we need to use Python to generate and migrate our models into this new database.
+
+Access the Python interpreter by typing "`python3`" and enter.
+
+- From here, we need to import our 'db' variable found within the taskmanager package, so type: `from taskmanager import db`
+- Now, using db, we need to perform the .create_all() method: `db.create_all()`
+- That's it, pretty simple enough, our Postgres database should be populated with these two
+tables and their respective columns and relationships.
+- Let's **exit the Python** interpreter by typing `exit()`.
+- To confirm that these tables exist within your database, then follow
+these instructions:
+
+```python
+psql -d taskmanager
+\dt
+```
+
+
+
+
+
+
+
+
 ## Gitpod Reminders
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
